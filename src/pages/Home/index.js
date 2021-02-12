@@ -1,18 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
-import { toast } from 'react-toastify';
-
 import { useAuth } from '../../contexts/AuthContext';
 import { useFirebase } from '../../contexts/FirebaseContext';
 
+import Navbar from '../../components/Navbar';
+
 import {
   Container,
-  Navbar,
-  NavbarContainer,
-  NavbarLeft,
-  NavbarRight,
-  NavbarTitle,
-  Avatar,
   Main,
   Label,
   FormInput,
@@ -28,7 +22,7 @@ const Home = () => {
   const [post, setPost] = useState('');
   const [posts, setPosts] = useState([]);
 
-  const { currentUser, signOut } = useAuth();
+  const { currentUser } = useAuth();
   const { db } = useFirebase();
 
   async function getAllPosts() {
@@ -46,22 +40,6 @@ const Home = () => {
   useEffect(() => {
     getAllPosts();
   }, []);
-
-  async function handleSignOut() {
-    try {
-      await signOut();
-    } catch {
-      toast.error('Falha ao realizar logout!', {
-        position: 'top-right',
-        autoClose: 4000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-      });
-    }
-  }
 
   async function handleSubmitPost(e) {
     e.preventDefault();
@@ -81,20 +59,7 @@ const Home = () => {
 
   return (
     <Container>
-      <Navbar>
-        <NavbarContainer>
-          <NavbarLeft>
-            <NavbarTitle>Dashboard</NavbarTitle>
-          </NavbarLeft>
-          <NavbarRight>
-            <Avatar
-              src={currentUser.photoURL}
-              alt={currentUser.displayName}
-              onClick={handleSignOut}
-            />
-          </NavbarRight>
-        </NavbarContainer>
-      </Navbar>
+      <Navbar />
 
       <Main>
         <form onSubmit={handleSubmitPost}>

@@ -60,9 +60,9 @@ const Routes = () => {
     <BrowserRouter>
       <Switch>
         <AuthRoute path="/" component={SignIn} exact />
-        <AuthRoute path="/signup" component={SignUp} />
-        <AuthRoute path="/chat" component={Chat} />
+        <Route path="/signup" component={SignUp} />
         <ProtectedRoute path="/app" component={Home} />
+        <ProtectedRoute path="/chat" component={Chat} />
       </Switch>
     </BrowserRouter>
   );

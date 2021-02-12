@@ -6,50 +6,6 @@ export const Container = styled.div`
   height: 100vh;
 `;
 
-export const Navbar = styled.nav`
-  position: sticky;
-  top: 0;
-  width: 100%;
-  height: 70px;
-  background-color: #fff;
-  border-bottom: 1px solid #ddd;
-
-  display: flex;
-  align-items: center;
-`;
-
-export const NavbarContainer = styled.div`
-  width: 90%;
-  max-width: 1120px;
-  margin: 0 auto;
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-export const NavbarLeft = styled.div``;
-
-export const NavbarRight = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const NavbarTitle = styled.h2``;
-
-export const Avatar = styled.img`
-  width: 46px;
-  height: 46px;
-  object-fit: cover;
-  border-radius: 23px;
-
-  :hover {
-    cursor: pointer;
-  }
-`;
-
 export const Main = styled.main`
   width: 90%;
   max-width: 1120px;

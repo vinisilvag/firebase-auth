@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
+import { useHistory } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 
@@ -27,8 +29,16 @@ const SignUp = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const { signUp } = useAuth();
+  const history = useHistory();
+
+  const { currentUser, signUp } = useAuth();
   const { storage } = useFirebase();
+
+  useEffect(() => {
+    if (currentUser) {
+      history.push('/app');
+    }
+  }, []);
 
   function handleImageChange(e) {
     if (e.target.files && e.target.files[0]) {
@@ -61,6 +71,8 @@ const SignUp = () => {
             displayName: name,
             photoURL,
           });
+
+          history.push('/app');
         });
       } catch {
         toast.error('Falha ao criar a conta!', {
